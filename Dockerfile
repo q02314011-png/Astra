@@ -2,20 +2,15 @@
 #
 # Собирается из корня репозитория:
 #   docker build -t astra .
-#
-# Зависимостей нет намеренно — бэкенд работает на стандартной библиотеке Node,
-# поэтому образ собирается где угодно без внешних зеркал.
 FROM node:20-alpine
 
 WORKDIR /app
 
-COPY server/package.json ./
-COPY server/src ./src
+COPY package.json ./
+COPY src ./src
 
 ENV PORT=4000
 ENV HOST=0.0.0.0
-# База — обычный JSON-файл. Без тома она пропадёт при каждом перезапуске,
-# поэтому в панели хостинга обязательно подключи постоянный диск.
 ENV ASTRA_DATA_DIR=/data
 
 EXPOSE 4000
