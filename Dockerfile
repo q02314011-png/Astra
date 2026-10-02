@@ -17,9 +17,7 @@ ENV HOST=0.0.0.0
 # База — обычный JSON-файл. Без тома она пропадёт при каждом перезапуске,
 # поэтому в панели хостинга обязательно подключи постоянный диск.
 ENV ASTRA_DATA_DIR=/data
-ENV SMS_MODE=dev
 
-VOLUME /data
 EXPOSE 4000
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \
